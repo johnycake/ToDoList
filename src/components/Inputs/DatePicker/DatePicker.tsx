@@ -38,7 +38,7 @@ export const DatePicker = ({
         asSingle
         {...(minimumToday && { minDate: new Date() })}
       />
-      <span>{error}</span>
+      <Label text={error} />
     </Column>
   )
 }

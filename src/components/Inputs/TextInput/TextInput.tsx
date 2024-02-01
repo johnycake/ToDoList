@@ -30,7 +30,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextProps>(
           ref={ref}
           {...rest}
         />
-        {error && <span>{error}</span>}
+        {error && <Label text={error} />}
       </Column>
     )
   }

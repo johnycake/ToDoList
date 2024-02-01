@@ -34,9 +34,9 @@ export const SearchInput = ({ label, placeholder, onChange, onSearchSubmit }: Se
   }
 
   return (
-    <Column>
+    <Column fullWidth center>
       {label && <Label text={label} />}
-      <form onSubmit={handleSubmit(handleOnSearchSubmit)}>
+      <form onSubmit={handleSubmit(handleOnSearchSubmit)} className="flex w-full justify-center">
         <Inline width={'50%'} centerContent>
           <TextInput
             placeholder={placeholder}
