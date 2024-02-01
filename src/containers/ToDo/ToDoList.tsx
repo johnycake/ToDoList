@@ -145,7 +145,7 @@ export const ToDoList: React.FC<IToDoList> = ({ listId }) => {
   return (
     <Column center width="80%">
       <Flex fullWidth centerContent>
-        <SearchInput placeholder={t('general.placeholder')} onSearchSubmit={handleFilterChange} />
+        <SearchInput placeholder={t('general.placeholder')} onChange={handleFilterChange} />
       </Flex>
       <DynamicElements<ToDoDataType>
         renderableComponent={(properties) => (
