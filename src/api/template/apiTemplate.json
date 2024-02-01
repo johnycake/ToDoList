@@ -1,0 +1,109 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Todo list",
+    "description": "Todo list",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://127.0.0.1/some/api",
+      "description": "DEV"
+    }
+  ],
+  "paths": {
+    "/todoitem": {
+      "post": {
+        "description": "Get ToDo item",
+        "requestBody": {
+          "description": "ToDo item Request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ToDoItemApiRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "ToDo item Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ToDoItemApiResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "BaseResponse": {
+        "type": "object",
+        "properties": {
+          "errorCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorDetail": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "ToDoItemApiResponse": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "nullable": false,
+                "example": "<GUID>"
+              },
+              "groupId": {
+                "type": "string",
+                "nullable": true,
+                "example": "<GUID>"
+              },
+              "title": {
+                "type": "string",
+                "nullable": true
+              },
+              "text": {
+                "type": "string",
+                "nullable": true
+              },
+              "deadline": {
+                "type": "string",
+                "nullable": true
+              },
+              "isDone": {
+                "type": "boolean",
+                "nullable": false
+              }
+            }
+          }
+        ]
+      },
+      "ToDoItemApiRequest": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": false,
+            "example": "<GUID>"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "toDoList": {
+    "addNextToDoItem": "Add next record"
+  },
+  "dynamicElements": {
+    "addRowErrorClose": "Close",
+    "addRowErrorMessage": "Maximum {{value}} records limit reached",
+    "remove": "Remove"
+  },
+  "toDoItems": {
+    "title": "Title",
+    "text": "Text",
+    "deadline": "Deadline",
+    "isDone": "Done"
+  },
+  "general": {
+    "placeholder": "type here"
+  },
+  "validation": {
+    "required": "required",
+    "dateMustNotBeInPast": "must not be in past"
+  }
+}

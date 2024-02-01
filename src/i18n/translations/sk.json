@@ -1,0 +1,23 @@
+{
+  "toDoList": {
+    "addNextToDoItem": "Pridaj další záznam"
+  },
+  "dynamicElements": {
+    "addRowErrorClose": "zavrieť",
+    "addRowErrorMessage": "bol dosiahnutý limit {{value}} záznamov",
+    "remove": "odstrániť"
+  },
+  "toDoItems": {
+    "title": "Titulok",
+    "text": "Text",
+    "deadline": "Deadline",
+    "isDone": "Hotovo"
+  },
+  "general": {
+    "placeholder": "zadajte"
+  },
+  "validation": {
+    "required": "Povinné",
+    "dateMustNotBeInPast": "nesmie byť v minulosti"
+  }
+}

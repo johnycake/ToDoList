@@ -1,0 +1,22 @@
+@mixin generalStyle {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: relative;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 20;
+}
+
+.lightTheme {
+    @include generalStyle();
+    background-color: yellowgreen;
+
+}
+
+.darkTheme {
+    @include generalStyle();
+    background-color: blue;
+
+}

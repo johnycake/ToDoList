@@ -1,0 +1,16 @@
+$backgroundEnabled: #1976d2;
+$backgroundDisabled: lightgrey;
+
+@mixin generalStyle {
+    border-radius: 5px;
+  }
+
+.buttonStyleEnabled {
+    @include generalStyle;
+    background-color: $backgroundEnabled;
+}
+
+.buttonStyleDisabled {
+    @include generalStyle;
+    background-color: $backgroundDisabled;
+}
