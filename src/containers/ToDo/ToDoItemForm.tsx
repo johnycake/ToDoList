@@ -1,6 +1,6 @@
 import { TFunction, useTranslation } from 'react-i18next'
 import { FieldValues, useForm } from 'react-hook-form'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { TextInput } from '../../components/Inputs/TextInput/TextInput'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -45,7 +45,10 @@ export const ToDoItemForm: React.FC<IToDoItemForm> = ({
   setAddNextElementPermission
 }) => {
   const { t } = useTranslation()
-
+  const [mounted, setMounted] = useState<boolean>(false);
+  useEffect(() => {
+    setMounted(true)
+  }, [])
   const mapElementDataToFormDataDefaultValue = (
     elementData?: ElementDataProps<ToDoDataType>
   ): ToDoDataType => {
@@ -97,7 +100,10 @@ export const ToDoItemForm: React.FC<IToDoItemForm> = ({
   const onFormSubmit = (formData: FieldValues) => {
     const mappedFormData: ElementDataProps<ToDoDataType> = mapFormDataToElementDataProps(formData)
     setAddNextElementPermission(true)
-    onSubmit?.(mappedFormData)
+    setMounted(false)
+    setTimeout(() => {
+      onSubmit?.(mappedFormData)
+    }, 500)    
     return
   }
 
@@ -106,7 +112,10 @@ export const ToDoItemForm: React.FC<IToDoItemForm> = ({
   }
 
   return (
-    <form onSubmit={handleSubmit(onFormSubmit)} className="w-full">
+    <form onSubmit={handleSubmit(onFormSubmit)} className={mounted ?
+      "w-full transition ease-out transform rotate-x-0 duration-500" :
+      "w-full transition ease-out transform -rotate-x-90 duration-500"
+    }>
       <Inline stretch>
         <Column grow={1}>
           <Inline stretch>

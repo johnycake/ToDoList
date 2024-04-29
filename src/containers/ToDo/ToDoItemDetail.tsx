@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { ElementDataProps } from '../../components/Common/DynamicElements/DynamicElementItem'
 import { CheckBox } from '../../components/Inputs/CheckBox/CheckBox'
 import { Column, Inline } from '../../components/ComponentAlignment'
@@ -19,22 +19,37 @@ export const ToDoItemDetail: React.FC<IToDoItemDetail<ToDoDataType>> = ({
   onItemStateChange,
   onDelete
 }) => {
-  const handleChangeItemState = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const [mounted, setMounted] = useState<boolean>(false);
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+  const handleChangeItemState = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const newStateElementDataProps: ElementDataProps<ToDoDataType> = {
       ...elementDataProps,
       data: { ...elementDataProps?.data, isDone: e.target.checked }
     }
     onItemStateChange?.(newStateElementDataProps)
-  }
+  }, [])
 
+  const handleDoEditing = () => {
+    setMounted(false)
+    setTimeout(() => {
+      onDoEditing?.()
+    }, 500)
+  }
+// "transition ease-in-out toDoItem-hover-sizeUp duration-200 toDoItem-detail-base"
+
+console.log({mounted})
   return (
-    <div className="mx-auto flex w-full items-center space-x-4 rounded-xl bg-lime-500 p-6 shadow-lg">
-      <Inline verticalCenter stretch>
+    <div className={ mounted ?
+    "transition ease-in-out transform rotate-x-0 duration-500 toDoItem-detail-base" : 
+    "transition ease-in-out transform rotate-x-90 duration-500 toDoItem-detail-base"}>
+      <Inline verticalCenter stretch onClick={handleDoEditing}>
         <CheckBox
           defaultChecked={!!elementDataProps?.data?.isDone}
           onChange={handleChangeItemState}
         />
-        <Column onClick={onDoEditing}>
+        <Column >
           <Label text={elementDataProps?.data?.title ?? ''} />
           <Label text={elementDataProps?.data?.deadline?.toDateString() ?? ''} />
           <Label text={elementDataProps?.data?.text ?? ''} />

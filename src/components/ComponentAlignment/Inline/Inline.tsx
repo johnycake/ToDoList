@@ -6,6 +6,7 @@ export type InlineType = {
   width?: string | number
   verticalCenter?: boolean
   centerContent?: boolean
+  onClick?: () => void
 } & React.PropsWithChildren
 
 const StyledDiv = styled.div<{
@@ -23,14 +24,16 @@ const StyledDiv = styled.div<{
   gap: 10px;
 `
 
-export const Inline = ({ stretch, width, verticalCenter, centerContent, children }: InlineType) => {
+export const Inline = ({ stretch, width, verticalCenter, centerContent, children, onClick }: InlineType) => {
   return (
     <StyledDiv
       $stretch={stretch}
       $width={width}
       $centerContent={centerContent}
-      $verticalCenter={verticalCenter}>
-      {children}
+      $verticalCenter={verticalCenter}
+      onClick={onClick}
+      >
+      {children}      
     </StyledDiv>
   )
 }

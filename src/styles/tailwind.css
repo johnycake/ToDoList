@@ -18,3 +18,12 @@
 
 @tailwind utilities;
 
+@layer components {
+   .toDoItem-detail-base {
+      @apply mx-auto flex w-full items-center space-x-4 rounded-xl bg-lime-500 p-6 shadow-lg;
+   }
+
+   .toDoItem-hover-sizeUp {
+      @apply hover:scale-105 hover:bg-yellow-500 
+   }
+}
