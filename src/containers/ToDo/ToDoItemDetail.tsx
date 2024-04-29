@@ -44,12 +44,12 @@ console.log({mounted})
     <div className={ mounted ?
     "transition ease-in-out transform rotate-x-0 duration-500 toDoItem-detail-base" : 
     "transition ease-in-out transform rotate-x-90 duration-500 toDoItem-detail-base"}>
-      <Inline verticalCenter stretch onClick={handleDoEditing}>
+      <Inline verticalCenter stretch >
         <CheckBox
           defaultChecked={!!elementDataProps?.data?.isDone}
           onChange={handleChangeItemState}
         />
-        <Column >
+        <Column onClick={handleDoEditing} grow={1} center>
           <Label text={elementDataProps?.data?.title ?? ''} />
           <Label text={elementDataProps?.data?.deadline?.toDateString() ?? ''} />
           <Label text={elementDataProps?.data?.text ?? ''} />
